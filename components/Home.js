@@ -1,29 +1,49 @@
 import React from 'react'
 import { StyleSheet, Text, View, Image } from 'react-native'
-import Avatar from './Avatar'
-// import Steps from './Steps'
-// import Stats from './Stats'
-import Swipe from './StepSwipe'
 
 const styles = StyleSheet.create({
-	container: {
+	Container: {
 		flex: 1,
-		backgroundColor: '#cc9900',
+		backgroundColor: 'black',
 		alignItems: 'center',
-	},
-	Image: {
-		//flex: 1,
-		margin: 20
-	}
+  },
+  Image: {
+    flex: 1,
+    position: 'absolute',
+    width: '100%',
+    height: '100%',
+    justifyContent: 'center',
+  },
+  Text: {
+    fontSize: 28,
+    fontFamily: 'Courier New',
+    textAlign: 'center',
+    backgroundColor: 'rgba(0,0,0,0)',
+    color: 'red',
+  },
+  Buffer1: {
+    flex: 1,
+  },
+  Buffer3: {
+    flex: 3,
+  }
 })
 
 export default class HomeComponent extends React.Component {
 	render() {
 		return (
-			<View style={styles.container}>
-				<Image style={styles.Image} source={require('./../assets/stepquestTitle.png')} />
-				<Avatar />
-				<Swipe Style={{flex: 6, backgroundColor: 'pink'}} />
+			<View style={styles.Container}>
+				<Image style={styles.Image} source={require('./../assets/beehive_cluster.png')} >
+          <View style={styles.Buffer1} />
+					<View style={styles.Buffer1}>
+						<Text style={styles.Text}>Pocket Astronomer</Text>
+					</View>
+          <View style={styles.Buffer1} />
+          <View style={styles.Buffer1} >
+            <Text style={styles.Text}>Search: ____________</Text>
+          </View>
+          <View style={styles.Buffer3} />
+				</Image>
 			</View>
 		);
 	}

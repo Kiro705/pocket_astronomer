@@ -27,7 +27,6 @@
     "react-navigation": "^1.0.0-beta.19",
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",
-    "redux-thunk": "^2.2.0",
-    "rn-apple-healthkit": "^0.6.1"
+    "redux-thunk": "^2.2.0"
   }
 }
