@@ -1,9 +1,8 @@
-import React from 'react'
 import { TabNavigator } from 'react-navigation'
 
 import Home from './Home'
 import Settings from './Settings'
-import Inventory from './Inventory'
+import Catalog from './Catalog'
 
 export const Tabs = TabNavigator({
   Home: {
@@ -18,17 +17,32 @@ export const Tabs = TabNavigator({
       // )
     }
   },
+  Catalog: {
+    screen: Catalog,
+    navigationOptions: {
+      tabBarLabel: 'Catalog'
+    }
+  },
   Settings: {
     screen: Settings,
     navigationOptions: {
       tabBarLabel: 'Settings'
     }
-  },
-  Inventory: {
-    screen: Inventory,
-    navigationOptions: {
-      tabBarLabel: 'Inventory'
-    }
   }
-
+}, {
+  tabBarPosition: 'bottom',
+  animationEnabled: true,
+  tabBarOptions: {
+    activeTintColor: 'red',
+    inactiveTintColor: '#600000',
+    activeBackgroundColor: '#020066',
+    inactiveBackgroundColor: 'black',
+    labelStyle: {
+      fontSize: 18,
+      fontFamily: 'Courier New',
+      marginTop: 1,
+      marginBottom: 13,
+      alignItems: 'center',
+    }
+  },
 })

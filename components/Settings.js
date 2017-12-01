@@ -8,23 +8,30 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   Image: {
-		flex: 1,
-		margin: 20
-	},
-	Textfield: {
-		flex: 13,
-			justifyContent: 'center',
-	}
+    flex: 1,
+    position: 'absolute',
+    width: '100%',
+    height: '100%',
+    justifyContent: 'center',
+  },
+  Text: {
+    fontSize: 28,
+    fontFamily: 'Courier New',
+    textAlign: 'center',
+    backgroundColor: 'rgba(0,0,0,0)',
+    color: 'red'
+  }
 });
 
 export default class SettingsComponent extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-      	<Image style={styles.Image} source={require('./../assets/stepquestTitle.png')} />
-				<View style={styles.Textfield}>
-        	<Text>Settings should go here???</Text>
-        </View>
+      	<Image style={styles.Image} source={require('./../assets/orion_belt_nebula.png')} >
+				  <View>
+            <Text style={styles.Text}>Settings should go here???</Text>
+          </View>
+        </Image>
       </View>
     );
   }
