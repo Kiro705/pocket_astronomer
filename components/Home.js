@@ -1,5 +1,8 @@
 import React from 'react'
+import {connect} from 'react-redux'
 import { StyleSheet, Text, View, Image } from 'react-native'
+import { Button, FormLabel, FormInput } from 'react-native-elements'
+import { getSearchResults } from '../store'
 
 const styles = StyleSheet.create({
 	Container: {
@@ -29,22 +32,45 @@ const styles = StyleSheet.create({
   }
 })
 
-export default class HomeComponent extends React.Component {
-	render() {
-		return (
-			<View style={styles.Container}>
-				<Image style={styles.Image} source={require('./../assets/beehive_cluster.png')} >
-          <View style={styles.Buffer1} />
-					<View style={styles.Buffer1}>
-						<Text style={styles.Text}>Pocket Astronomer</Text>
-					</View>
-          <View style={styles.Buffer1} />
-          <View style={styles.Buffer1} >
-            <Text style={styles.Text}>Search: ____________</Text>
-          </View>
-          <View style={styles.Buffer3} />
-				</Image>
-			</View>
-		);
-	}
+const mapState = (state) => {
+  return {
+    searchResults: state.searchResults
+  }
 }
+
+const mapDispatch = (dispatch) => {
+  return {
+    handleSearch: (evt) => {
+      evt.preventDefault()
+      dispatch(getSearchResults('Jupiter'))
+    }
+  }
+}
+
+function HomeComponent(props){
+	return (
+		<View style={styles.Container}>
+			<Image style={styles.Image} source={require('./../assets/beehive_cluster.png')} >
+        <View style={styles.Buffer1} />
+				<View style={styles.Buffer1}>
+					<Text style={styles.Text}>Pocket Astronomer</Text>
+				</View>
+        <View style={styles.Buffer1} />
+        <View style={styles.Buffer3} >
+          <Button
+            raised
+            icon={{name: 'space-shuttle', size: 50, color: '#600000', type: 'font-awesome'}}
+            buttonStyle={{backgroundColor: '#191919', borderRadius: 10}}
+            textStyle={{textAlign: 'center', fontSize: 28, fontFamily: 'Courier New', color:  '#600000'}}
+            title={`Search`}
+            onPress={props.handleSearch}
+          />
+        </View>
+        <View style={styles.Buffer3} />
+			</Image>
+		</View>
+	)
+}
+
+export default connect(mapState, mapDispatch)(HomeComponent)
+
