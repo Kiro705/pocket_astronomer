@@ -1,12 +1,11 @@
 import { TabNavigator } from 'react-navigation'
-
-import Home from './Home'
+import HomeStack from './HomeStack'
 import Settings from './Settings'
 import Catalog from './Catalog'
 
 export const Tabs = TabNavigator({
-  Home: {
-    screen: Home,
+  HomeStack: {
+    screen: HomeStack,
     navigationOptions: {
       tabBarLabel: 'Home',
       // tabBarIcon: ({ tintColor }) => (

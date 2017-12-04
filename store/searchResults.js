@@ -8,6 +8,9 @@ const GET_SEARCH_RESULTS = 'GET_SEARCH_RESULTS'
  * INITIAL STATE
  */
 const searchResults = [null]
+//Results have ability to chain searches with next page item
+const nextPage = ''
+const prevPage = ''
 
 /**
  * ACTION CREATORS
@@ -24,10 +27,9 @@ export const getSearchResults = (searchString) =>
 		fetch(`https://images-api.nasa.gov/search?q=${searchString}&media_type=image`, {method: 'GET'})
 			.then(data => data.json())
 			.then(results => {
-				console.log(results)
-				//dispatch(getYelpListAction(results.data))
+				dispatch(getSearchResultsAction(results.collection.items))
 			})
-			.catch(console.error.bind(console))
+			.catch((error) => console.error(error))
 
 /**
  * REDUCER

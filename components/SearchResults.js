@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import { StyleSheet, View, Image, StatusBar } from 'react-native'
+import { StyleSheet, Text, View, Image } from 'react-native'
 import { Button, FormLabel, FormInput } from 'react-native-elements'
 import { getSearchResults } from '../store'
 
@@ -38,39 +38,19 @@ const mapState = (state) => {
   }
 }
 
-const mapDispatch = (dispatch) => {
-  return {
-    handleSearch: () => {
-      dispatch(getSearchResults('Jupiter'))
-    }
-  }
-}
 
-function HomeComponent(props){
+function SearchResultsComponent(props){
 	return (
 		<View style={styles.Container}>
-      <StatusBar barStyle="light-content" />
 			<Image style={styles.Image} source={require('./../assets/beehive_cluster.png')} >
         <View style={styles.Buffer3} />
-        <View style={styles.Buffer3} >
-          <Button
-            raised
-            icon={{name: 'space-shuttle', size: 50, color: '#600000', type: 'font-awesome'}}
-            buttonStyle={{backgroundColor: '#191919', borderRadius: 10}}
-            textStyle={{textAlign: 'center', fontSize: 28, fontFamily: 'Courier New', color:  '#600000'}}
-            title={`Search`}
-            onPress={() => {
-              props.handleSearch()
-              props.navigation.navigate('SearchResults', {query: 'Jupiter'})
-            }
-          }
-          />
+        <View style={styles.Buffer1} >
+          <Text style={styles.Text}>Length: {props.searchResults.length}</Text>
         </View>
-        <View style={styles.Buffer3} />
 			</Image>
 		</View>
 	)
 }
 
-export default connect(mapState, mapDispatch)(HomeComponent)
+export default connect(mapState)(SearchResultsComponent)
 
