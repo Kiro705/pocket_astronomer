@@ -61,7 +61,7 @@ function HomeComponent(props){
             title={`Search`}
             onPress={() => {
               props.handleSearch()
-              props.navigation.navigate('SearchResults', {query: 'Jupiter'})
+              props.navigation.navigate('SearchResults')
             }
           }
           />
