@@ -1,5 +1,8 @@
 {
   "expo": {
-    "sdkVersion": "22.0.0"
+    "name": "Pocket Astronomer",
+    "slug": "pocket_astronomer",
+    "sdkVersion": "22.0.0",
+    "privacy": "public"
   }
 }

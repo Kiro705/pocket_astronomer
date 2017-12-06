@@ -30,7 +30,6 @@ export const getSearchResults = (searchString) =>
 		fetch(`https://images-api.nasa.gov/search?q=${searchString}&media_type=image`, {method: 'GET'})
 			.then(data => data.json())
 			.then(results => {
-				console.log(results)
 				dispatch(getSearchResultsAction(results.collection, searchString))
 			})
 			.catch((error) => console.error(error))

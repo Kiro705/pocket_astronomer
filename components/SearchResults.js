@@ -27,6 +27,9 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0,0,0,0)',
     color: 'red',
   },
+  ResultItem: {
+    backgroundColor: 'blue',
+  },
   Buffer1: {
     flex: 1,
   },
@@ -43,7 +46,6 @@ const mapState = (state) => {
 
 
 function SearchResultsComponent(props){
-  console.log(props)
   if (props.searchResults.list[0] !== null){
     if (props.searchResults.list.length){
       return (
@@ -51,7 +53,11 @@ function SearchResultsComponent(props){
           <Image style={styles.Image} source={require('./../assets/beehive_cluster.png')} >
             <View style={styles.Buffer1} >
               <ScrollView>
-                <ResultItem data={props.searchResults.list[0]} />
+                {
+                  props.searchResults.list.map((image, index) => {
+                    return (<ResultItem style={styles.ResultItem} key={index + 1} data={image} />)
+                  })
+                }
               </ScrollView>
             </View>
           </Image>

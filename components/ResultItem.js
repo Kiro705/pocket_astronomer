@@ -3,27 +3,25 @@ import { StyleSheet, View, Image, Text } from 'react-native'
 
 const styles = StyleSheet.create({
 	Container: {
-		height: 50,
-		backgroundColor: 'black',
+		height: 500,
+		backgroundColor: '#191919',
 		alignItems: 'center',
 		marginTop: 10,
 		marginLeft: 10,
 		marginRight: 10,
+    marginBottom: 10,
   },
   Image: {
-    flex: 1,
-    position: 'absolute',
+    height: '70%',
     width: '100%',
-    height: '100%',
-    justifyContent: 'center',
   },
   Text: {
-    flex: 1,
     fontSize: 28,
     fontFamily: 'Courier New',
     textAlign: 'left',
     backgroundColor: 'rgba(0,0,0,0)',
     color: 'red',
+    margin: 10,
   },
   Buffer1: {
     flex: 1,
@@ -34,8 +32,6 @@ const styles = StyleSheet.create({
 })
 
 const ResultItem = (props) => {
-	console.log(props.data)
-	console.log(props.data.links[0].href)
 	return (
 		<View style={styles.Container}>
 			<Text style={styles.Text}>{props.data.data[0].title}</Text>
