@@ -66,7 +66,7 @@ class SearchResultsComponent extends React.Component {
                 <ScrollView>
                   {
                     this.props.searchResults.list.map((image, index) => {
-                      return (<ResultItem style={styles.ResultItem} key={index + 1} data={image} />)
+                      return (<ResultItem style={styles.ResultItem} key={index} data={image} navigator={this.props.navigation.navigate} />)
                     })
                   }
                 </ScrollView>
@@ -96,14 +96,6 @@ class SearchResultsComponent extends React.Component {
     }
   }
 }
-
-// // const storeInstance = store.getState()
-
-// // console.log(storeInstance, 'hiya')
-
-// SearchResultsComponent.navigationOptions = {
-//   title: title,
-// }
 
 export default connect(mapState)(SearchResultsComponent)
 

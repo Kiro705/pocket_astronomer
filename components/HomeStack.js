@@ -1,6 +1,7 @@
 import { StackNavigator } from 'react-navigation'
 import Home from './Home'
 import SearchResults from './SearchResults'
+import SingleResult from './SingleResult'
 
 const HomeStack = StackNavigator({
 	Home: {
@@ -37,10 +38,29 @@ const HomeStack = StackNavigator({
         fontWeight: 'normal'
       }
     })},
-  }
-}, {
+  },
+    SingleResult: {
+      path: 'search-results/:query',
+      screen: SingleResult,
+      navigationOptions: ({navigation}) => {
+        if (!navigation.state.params) {
+          navigation.state.params = {}
+        }
+        return ({
+        title: navigation.state.params.title || ' ',
+        headerStyle: {
+          backgroundColor: '#191919',
+        },
+        headerTitleStyle: {
+          color: '#600000',
+          fontFamily: 'Courier New',
+          fontSize: 30,
+          fontWeight: 'normal'
+        }
+      })},
+    }
+  }, {
 	headerMode: 'screen'
-
 })
 
 export default HomeStack
