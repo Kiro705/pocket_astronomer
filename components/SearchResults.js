@@ -1,8 +1,8 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import { StyleSheet, Text, View, Image, ScrollView } from 'react-native'
-import { Button, FormLabel, FormInput } from 'react-native-elements'
-import { getSearchResults } from '../store'
+import { Button } from 'react-native-elements'
+import store, { getSearchResults } from '../store'
 import Loading from './Loading'
 import ResultItem from './ResultItem'
 
@@ -44,46 +44,66 @@ const mapState = (state) => {
   }
 }
 
+class SearchResultsComponent extends React.Component {
 
-function SearchResultsComponent(props){
-  if (props.searchResults.list[0] !== null){
-    if (props.searchResults.list.length){
-      return (
-        <View style={styles.Container}>
-          <Image style={styles.Image} source={require('./../assets/beehive_cluster.png')} >
-            <View style={styles.Buffer1} >
-              <ScrollView>
-                {
-                  props.searchResults.list.map((image, index) => {
-                    return (<ResultItem style={styles.ResultItem} key={index + 1} data={image} />)
-                  })
-                }
-              </ScrollView>
-            </View>
-          </Image>
-        </View>
-      )
+  componentDidUpdate(prevProps){
+    if (this.props.searchResults.topic && !prevProps.searchResults.topic){
+      this.props.navigation.setParams({title: this.props.searchResults.topic})
+    }
+  }
+
+  render() {
+    if (this.props.searchResults.list[0] !== null){
+      // if (!updated){
+      //   this.props.navigation.setParams({title: this.props.searchTopic})
+      //   updated = true
+      // }
+      if (this.props.searchResults.list.length){
+        return (
+          <View style={styles.Container}>
+            <Image style={styles.Image} source={require('./../assets/beehive_cluster.png')} >
+              <View style={styles.Buffer1} >
+                <ScrollView>
+                  {
+                    this.props.searchResults.list.map((image, index) => {
+                      return (<ResultItem style={styles.ResultItem} key={index + 1} data={image} />)
+                    })
+                  }
+                </ScrollView>
+              </View>
+            </Image>
+          </View>
+        )
+      } else {
+        return (
+          <View style={styles.Container}>
+            <Image style={styles.Image} source={require('./../assets/beehive_cluster.png')} >
+              <View style={styles.Buffer3} />
+              <View style={styles.Buffer1}>
+                <Text style={styles.Text}>Nothing matching '{this.props.searchResults.topic}' was found</Text>
+              </View>
+              <View style={styles.Buffer3} />
+            </Image>
+          </View>
+        )
+      }
     } else {
       return (
         <View style={styles.Container}>
-          <Image style={styles.Image} source={require('./../assets/beehive_cluster.png')} >
-            <View style={styles.Buffer3} />
-            <View style={styles.Buffer1}>
-              <Text style={styles.Text}>Nothing matching '{props.searchResults.topic}' was found</Text>
-            </View>
-            <View style={styles.Buffer3} />
-          </Image>
+          <Loading />
         </View>
       )
     }
-  } else {
-    return (
-      <View style={styles.Container}>
-        <Loading />
-      </View>
-    )
   }
 }
+
+// // const storeInstance = store.getState()
+
+// // console.log(storeInstance, 'hiya')
+
+// SearchResultsComponent.navigationOptions = {
+//   title: title,
+// }
 
 export default connect(mapState)(SearchResultsComponent)
 

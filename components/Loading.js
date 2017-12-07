@@ -18,6 +18,7 @@ const styles = StyleSheet.create({
     fontSize: 28,
     fontFamily: 'Courier New',
     textAlign: 'center',
+    backgroundColor: 'rgba(0,0,0,0)',
     color: '#600000',
   },
   Buffer1: {

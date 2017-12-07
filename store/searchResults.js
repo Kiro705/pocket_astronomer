@@ -18,7 +18,7 @@ const searchResultsObj = {
  * ACTION CREATORS
  */
 const getSearchResultsAction = (searchResults, searchString) => ({type: GET_SEARCH_RESULTS, searchResults, searchString})
-export const resetSearchResults = () => ({type: GET_SEARCH_RESULTS, yelpList: [null]})
+export const resetSearchResults = () => ({type: GET_SEARCH_RESULTS, searchResults: {items: [null]}})
 
 /**
  * THUNK CREATORS

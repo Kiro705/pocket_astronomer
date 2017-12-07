@@ -20,7 +20,23 @@ const HomeStack = StackNavigator({
   },
   SearchResults: {
     path: 'search-results/:query',
-    screen: SearchResults
+    screen: SearchResults,
+    navigationOptions: ({navigation}) => {
+      if (!navigation.state.params) {
+        navigation.state.params = {}
+      }
+      return ({
+      title: navigation.state.params.title || ' ',
+      headerStyle: {
+        backgroundColor: '#191919',
+      },
+      headerTitleStyle: {
+        color: '#600000',
+        fontFamily: 'Courier New',
+        fontSize: 30,
+        fontWeight: 'normal'
+      }
+    })},
   }
 }, {
 	headerMode: 'screen'

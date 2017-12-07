@@ -2,7 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import { StyleSheet, View, Image, StatusBar } from 'react-native'
 import { Button, FormInput } from 'react-native-elements'
-import { getSearchResults, writeSearchTopic, resetSearchTopic } from '../store'
+import { getSearchResults, writeSearchTopic, setParamsAction, resetSearchResults, resetSearchTopic } from '../store'
 
 const styles = StyleSheet.create({
 	Container: {
@@ -56,6 +56,7 @@ const mapDispatch = (dispatch) => {
       dispatch(writeSearchTopic(string))
     },
     handleSearch: (topic) => {
+      dispatch(resetSearchResults())
       dispatch(getSearchResults(topic))
       dispatch(resetSearchTopic())
     }
@@ -89,6 +90,7 @@ function HomeComponent(props){
             title={`Search`}
             onPress={() => {
               props.handleSearch(props.searchTopic)
+              props.navigation.dispatch(setParamsAction)
               props.navigation.navigate('SearchResults')
             }
           }
