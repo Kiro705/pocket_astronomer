@@ -1,8 +1,8 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import { StyleSheet, View, Image, StatusBar } from 'react-native'
-import { Button, FormLabel, FormInput } from 'react-native-elements'
-import { getSearchResults } from '../store'
+import { Button, FormInput } from 'react-native-elements'
+import { getSearchResults, writeSearchTopic, resetSearchTopic } from '../store'
 
 const styles = StyleSheet.create({
 	Container: {
@@ -21,8 +21,20 @@ const styles = StyleSheet.create({
     fontSize: 28,
     fontFamily: 'Courier New',
     textAlign: 'center',
-    backgroundColor: 'rgba(0,0,0,0)',
-    color: 'red',
+    color: '#600000',
+  },
+  FormContainer: {
+    borderWidth: 2,
+    borderColor: '#600000',
+    borderBottomColor: '#600000',
+    backgroundColor: '#191919',
+    borderRadius: 3,
+  },
+  FormInput: {
+    fontSize: 28,
+    margin: 5,
+    fontFamily: 'Courier New',
+    color: 'gray',
   },
   Buffer1: {
     flex: 1,
@@ -34,14 +46,18 @@ const styles = StyleSheet.create({
 
 const mapState = (state) => {
   return {
-    searchResults: state.searchResults
+    searchTopic: state.searchTopic
   }
 }
 
 const mapDispatch = (dispatch) => {
   return {
-    handleSearch: () => {
-      dispatch(getSearchResults('Jupiter'))
+    handleChange: (string) => {
+      dispatch(writeSearchTopic(string))
+    },
+    handleSearch: (topic) => {
+      dispatch(getSearchResults(topic))
+      dispatch(resetSearchTopic())
     }
   }
 }
@@ -52,15 +68,27 @@ function HomeComponent(props){
       <StatusBar barStyle="light-content" />
 			<Image style={styles.Image} source={require('./../assets/beehive_cluster.png')} >
         <View style={styles.Buffer3} />
+        <FormInput
+          onChangeText={(value) => {
+            props.handleChange(value)
+          }}
+          defaultValue={props.searchTopic}
+          containerStyle={styles.FormContainer}
+          inputStyle={styles.FormInput}
+          keyboardAppearance="dark"
+          placeholder="enter search term"
+          placeholderTextColor= "#600000"
+        />
+        <View style={styles.Buffer1} />
         <View style={styles.Buffer3} >
           <Button
             raised
             icon={{name: 'space-shuttle', size: 50, color: '#600000', type: 'font-awesome'}}
             buttonStyle={{backgroundColor: '#191919', borderRadius: 10}}
-            textStyle={{textAlign: 'center', fontSize: 28, fontFamily: 'Courier New', color:  '#600000'}}
+            textStyle={styles.Text}
             title={`Search`}
             onPress={() => {
-              props.handleSearch()
+              props.handleSearch(props.searchTopic)
               props.navigation.navigate('SearchResults')
             }
           }
