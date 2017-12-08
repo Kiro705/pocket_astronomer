@@ -1,8 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import { StyleSheet, Text, View, Image, ScrollView } from 'react-native'
-import { Button } from 'react-native-elements'
-import store, { getSearchResults } from '../store'
 import Loading from './Loading'
 import ResultItem from './ResultItem'
 
@@ -54,10 +52,6 @@ class SearchResultsComponent extends React.Component {
 
   render() {
     if (this.props.searchResults.list[0] !== null){
-      // if (!updated){
-      //   this.props.navigation.setParams({title: this.props.searchTopic})
-      //   updated = true
-      // }
       if (this.props.searchResults.list.length){
         return (
           <View style={styles.Container}>
@@ -65,8 +59,8 @@ class SearchResultsComponent extends React.Component {
               <View style={styles.Buffer1} >
                 <ScrollView>
                   {
-                    this.props.searchResults.list.map((image, index) => {
-                      return (<ResultItem style={styles.ResultItem} key={index} data={image} navigator={this.props.navigation.navigate} />)
+                    this.props.searchResults.list.map((image) => {
+                      return (<ResultItem style={styles.ResultItem} key={image.data[0].nasa_id} data={image} navigator={this.props.navigation.navigate} />)
                     })
                   }
                 </ScrollView>

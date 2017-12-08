@@ -1,37 +1,43 @@
 import React from 'react'
-import { StyleSheet, Text, View, Image, StatusBar } from 'react-native'
+import {connect} from 'react-redux'
+import { StyleSheet, Text, View, Image, StatusBar, ScrollView } from 'react-native'
+import { Divider } from 'react-native-elements'
+
+const Dimensions = require('Dimensions')
+const  {height, width} = Dimensions.get('window')
 
 const styles = StyleSheet.create({
 	Container: {
 		flex: 1,
 		backgroundColor: 'black',
-		alignItems: 'center',
   },
   Image: {
-    flex: 1,
-    position: 'absolute',
-    width: '100%',
-    height: '100%',
-    justifyContent: 'center',
+    height: 500,
+    resizeMode: 'contain',
+    width: width - 20,
+    margin: 10,
   },
-  Text: {
-    fontSize: 28,
+  Title: {
+    fontSize: 36,
     fontFamily: 'Courier New',
     textAlign: 'center',
     color: '#600000',
+    margin: 10,
   },
-  FormContainer: {
-    borderWidth: 2,
-    borderColor: '#600000',
-    borderBottomColor: '#600000',
-    backgroundColor: '#191919',
-    borderRadius: 3,
-  },
-  FormInput: {
-    fontSize: 28,
-    margin: 5,
+  Description: {
+    fontSize: 20,
     fontFamily: 'Courier New',
-    color: 'gray',
+    fontStyle: 'italic',
+    textAlign: 'left',
+    color: '#600000',
+    margin: 10,
+  },
+  Value: {
+    fontSize: 28,
+    fontFamily: 'Courier New',
+    textAlign: 'left',
+    color: '#600000',
+    margin: 10,
   },
   Buffer1: {
     flex: 1,
@@ -41,14 +47,38 @@ const styles = StyleSheet.create({
   }
 })
 
+const mapState = (state) => {
+  return {
+    singleResult: state.singleResult
+  }
+}
+
 function SingleResultComponent(props){
-	console.log('props', props)
+	console.log('props', props.singleResult)
+  let tagString = 'none'
+  if (props.singleResult.tags){
+    tagString = (props.singleResult.tags.reduce((accumulator, value) => {
+      return accumulator + value + ', '
+    }, ''))
+  }
+  tagString = tagString.slice(0, tagString.length - 2)
 	return (
 		<View style={styles.Container}>
-      <StatusBar barStyle="light-content" />
-			<Text> Hello </Text>
+      <ScrollView>
+        <StatusBar barStyle="light-content" />
+  			<Text style={styles.Title}> {props.singleResult.title}</Text>
+        <Divider style={{ backgroundColor: '#191919' }} />
+        <Text style={styles.Description}>{props.singleResult.description}</Text>
+        <Divider style={{ backgroundColor: '#191919' }} />
+        <Text style={styles.Value}>NASA id: {props.singleResult.id}</Text>
+        <Text style={styles.Value}>Date: {props.singleResult.date}</Text>
+        <Text style={styles.Value}>Center: {props.singleResult.center}</Text>
+        <Text style={styles.Value}>Tags: {tagString}</Text>
+        <Divider style={{ backgroundColor: '#191919' }} />
+        <Image style={styles.Image} source={{uri: props.singleResult.image}} />
+      </ScrollView>
 		</View>
 	)
 }
 
-export default SingleResultComponent
+export default connect(mapState)(SingleResultComponent)

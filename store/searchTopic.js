@@ -1,5 +1,3 @@
-import { NavigationActions } from 'react-navigation'
-
 /**
  * ACTION TYPES
  */
@@ -16,11 +14,6 @@ const searchTopic = ''
  */
 export const writeSearchTopic = (searchTopic) => ({type: WRITE_SEARCH_TOPIC, searchTopic})
 export const resetSearchTopic = () => ({type: RESET_SEARCH_TOPIC, searchTopic: ''})
-
-export const setParamsAction = NavigationActions.setParams({
-  params: { title: searchTopic },
-  key: 'SearchResults',
-})
 
 /**
  * REDUCER

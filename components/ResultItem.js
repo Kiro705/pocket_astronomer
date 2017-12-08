@@ -1,7 +1,9 @@
 import React from 'react'
+import {connect} from 'react-redux'
 import { StyleSheet, View, Image, Text, TouchableHighlight } from 'react-native'
-const Dimensions = require('Dimensions')
+import { setSingleResult, resetSingleResult } from '../store'
 
+const Dimensions = require('Dimensions')
 const  {height, width} = Dimensions.get('window')
 
 const styles = StyleSheet.create({
@@ -39,13 +41,38 @@ const styles = StyleSheet.create({
   }
 })
 
-const ResultItem = (props) => {
+const mapState = (state) => {
+  return {
+    singleResult: state.singleResult
+  }
+}
+
+const mapDispatch = (dispatch) => {
+  return {
+    handleSelect: (resultObj) => {
+      dispatch(resetSingleResult())
+      dispatch(setSingleResult(resultObj))
+    }
+  }
+}
+
+function ResultItemComponent (props){
+  const data = props.data.data[0]
+  const dataObj = {
+    id: data.nasa_id,
+    image: props.data.links[0].href,
+    title: data.title,
+    center: data.center,
+    tags: data.keywords,
+    date: data.date_created.slice(0, data.date_created.indexOf('T')),
+    description: data.description_508,
+  }
   return (
     <View>
       <Text style={styles.Text}>{props.data.data[0].title}</Text>
       <TouchableHighlight
         onPress={() => {
-          console.log(props)
+          props.handleSelect(dataObj)
           props.navigator('SingleResult')
         }}
       >
@@ -59,4 +86,4 @@ const ResultItem = (props) => {
   )
 }
 
-export default ResultItem
+export default connect(mapState, mapDispatch)(ResultItemComponent)

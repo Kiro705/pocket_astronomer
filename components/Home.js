@@ -2,7 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import { StyleSheet, View, Image, StatusBar } from 'react-native'
 import { Button, FormInput } from 'react-native-elements'
-import { getSearchResults, writeSearchTopic, setParamsAction, resetSearchResults, resetSearchTopic } from '../store'
+import { getSearchResults, writeSearchTopic, resetSearchResults, resetSearchTopic } from '../store'
 
 const styles = StyleSheet.create({
 	Container: {
@@ -90,7 +90,6 @@ function HomeComponent(props){
             title={`Search`}
             onPress={() => {
               props.handleSearch(props.searchTopic)
-              props.navigation.dispatch(setParamsAction)
               props.navigation.navigate('SearchResults')
             }
           }

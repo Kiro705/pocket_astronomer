@@ -2,13 +2,12 @@
  * ACTION TYPES
  */
 const GET_SEARCH_RESULTS = 'GET_SEARCH_RESULTS'
-const SET_SINGLE_VIEW = 'SET_SINGLE_VIEW'
+const RESET_SEARCH_RESULTS = 'RESET_SEARCH_RESULTS'
 
 /**
  * INITIAL STATE
  */
 const searchResultsObj = {
-	singleView: 100,
 	topic: '',
 	list: [null],
 	//Results have ability to chain searches with next page item
@@ -20,9 +19,7 @@ const searchResultsObj = {
  * ACTION CREATORS
  */
 const getSearchResultsAction = (searchResults, searchString) => ({type: GET_SEARCH_RESULTS, searchResults, searchString})
-export const resetSearchResults = () => ({type: GET_SEARCH_RESULTS, searchResults: {items: [null]}})
-export const setSingleView = (index) => ({type: SET_SINGLE_VIEW, index})
-export const resetSingleView = () => ({type: SET_SINGLE_VIEW, index: 100})
+export const resetSearchResults = () => ({type: RESET_SEARCH_RESULTS, searchResults: {topic: '', list: [null], next: '', prevPage: ''}})
 
 /**
  * THUNK CREATORS
@@ -43,8 +40,8 @@ export default function (state = searchResultsObj, action) {
 	switch (action.type) {
 	case GET_SEARCH_RESULTS:
 		return Object.assign({}, state, {topic: action.searchString, list: action.searchResults.items})
-	case SET_SINGLE_VIEW:
-		return Object.assign({}, state, {singleView: action.index})
+	case RESET_SEARCH_RESULTS:
+		return Object.assign({}, state, action.searchResults)
 	default:
 		return state
 	}
