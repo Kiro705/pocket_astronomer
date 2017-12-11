@@ -8,6 +8,13 @@ const HomeStack = StackNavigator({
     screen: Home,
     navigationOptions: ({navigation}) => ({
       title: `Pocket Astronomer`,
+      headerBackTitle: 'Home',
+      headerBackTitleStyle: {
+        color: '#600000',
+        fontFamily: 'Courier New',
+        fontSize: 24,
+        fontWeight: 'normal'
+      },
       headerStyle: {
         backgroundColor: '#191919',
       },
@@ -16,7 +23,8 @@ const HomeStack = StackNavigator({
         fontFamily: 'Courier New',
         fontSize: 30,
         fontWeight: 'normal'
-      }
+      },
+      headerTintColor: '#600000'
     }),
   },
   SearchResults: {
@@ -36,7 +44,14 @@ const HomeStack = StackNavigator({
         fontFamily: 'Courier New',
         fontSize: 30,
         fontWeight: 'normal'
-      }
+      },
+      headerBackTitleStyle: {
+        color: '#600000',
+        fontFamily: 'Courier New',
+        fontSize: 24,
+        fontWeight: 'normal'
+      },
+      headerTintColor: '#600000'
     })},
   },
     SingleResult: {
@@ -56,7 +71,14 @@ const HomeStack = StackNavigator({
           fontFamily: 'Courier New',
           fontSize: 30,
           fontWeight: 'normal'
-        }
+        },
+        headerBackTitleStyle: {
+          color: '#600000',
+          fontFamily: 'Courier New',
+          fontSize: 24,
+          fontWeight: 'normal'
+        },
+        headerTintColor: '#600000'
       })},
     }
   }, {
