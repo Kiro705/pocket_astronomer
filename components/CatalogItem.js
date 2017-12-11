@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     margin: 10,
   },
   Value: {
-    fontSize: 28,
+    fontSize: 20,
     fontFamily: 'Courier New',
     textAlign: 'left',
     color: '#600000',
@@ -51,13 +51,14 @@ function CatalogItemComponent(props){
       <ScrollView>
         <StatusBar barStyle="light-content" />
         <Text style={styles.Title}>{props.catalogItem.title}</Text>
+        <Divider style={{ backgroundColor: '#191919' }} />
         {
           Object.keys(props.catalogItem).map((key) => {
             if (key !== 'title'){
               return (
                 <View key={key}>
-                  <Divider style={{ backgroundColor: '#191919' }} />
                   <Text style={styles.Value}>{key}: {props.catalogItem[key]}</Text>
+                  <Divider style={{ backgroundColor: '#191919' }} />
                 </View>
               )
             }
