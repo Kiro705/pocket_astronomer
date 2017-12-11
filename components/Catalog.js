@@ -1,5 +1,8 @@
 import React from 'react'
-import { StyleSheet, Text, View, Image } from 'react-native'
+import {connect} from 'react-redux'
+import { StyleSheet, View, Image, StatusBar } from 'react-native'
+import { Button } from 'react-native-elements'
+import { setCatalogItem, resetCatalogItem} from '../store'
 
 const styles = StyleSheet.create({
   Container: {
@@ -18,21 +21,52 @@ const styles = StyleSheet.create({
     fontSize: 28,
     fontFamily: 'Courier New',
     textAlign: 'center',
-    backgroundColor: 'rgba(0,0,0,0)',
-    color: 'red'
+    color: '#600000',
+  },
+  Buffer1: {
+    flex: 1,
+  },
+  Buffer3: {
+    flex: 3,
   }
-});
+})
 
-export default class SettingsComponent extends React.Component {
-  render() {
-    return (
-      <View style={styles.Container}>
-        <Image style={styles.Image} source={require('./../assets/whirlpool_galaxy.png')}>
-          <View>
-            <Text style={styles.Text}>Space Catalog</Text>
-          </View>
-        </Image>
-      </View>
-    );
+const mapState = (state) => {
+  return {
+    catalogItem: state.catalogItem
   }
 }
+
+const mapDispatch = (dispatch) => {
+  return {
+    handleSelect: (data) => {
+      dispatch(setCatalogItem(data))
+    }
+  }
+}
+
+function CatalogComponent (props){
+  return (
+    <View style={styles.Container}>
+      <StatusBar barStyle="light-content" />
+      <Image style={styles.Image} source={require('./../assets/whirlpool_galaxy.png')}>
+        <View>
+          <Button
+            raised
+            buttonStyle={{backgroundColor: '#191919', borderRadius: 10}}
+            textStyle={styles.Text}
+            title={`Tester`}
+            onPress={() => {
+              props.handleSelect({title: 'something', nothing: 'nothing'})
+              props.navigation.navigate('CatalogItem')
+            }
+          }
+          />
+        </View>
+      </Image>
+    </View>
+  )
+}
+
+export default connect(mapState, mapDispatch)(CatalogComponent)
+

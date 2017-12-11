@@ -54,7 +54,6 @@ const mapState = (state) => {
 }
 
 function SingleResultComponent(props){
-	console.log('props', props.singleResult)
   let tagString = 'none'
   if (props.singleResult.tags){
     tagString = (props.singleResult.tags.reduce((accumulator, value) => {

@@ -1,7 +1,7 @@
 import { TabNavigator } from 'react-navigation'
 import HomeStack from './HomeStack'
 import Settings from './Settings'
-import Catalog from './Catalog'
+import CatalogStack from './CatalogStack'
 
 export const Tabs = TabNavigator({
   HomeStack: {
@@ -16,8 +16,8 @@ export const Tabs = TabNavigator({
       // )
     }
   },
-  Catalog: {
-    screen: Catalog,
+  CatalogStack: {
+    screen: CatalogStack,
     navigationOptions: {
       tabBarLabel: 'Catalog'
     }

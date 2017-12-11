@@ -4,11 +4,13 @@ import thunkMiddleware from 'redux-thunk'
 import searchResults from './searchResults'
 import searchTopic from './searchTopic'
 import singleResult from './singleResult'
+import catalogItem from './catalogItem'
 
 const reducer = combineReducers({
 	searchResults,
 	searchTopic,
-	singleResult
+	singleResult,
+	catalogItem
 })
 
 let store
@@ -25,3 +27,4 @@ export default store
 export * from './searchResults'
 export * from './searchTopic'
 export * from './singleResult'
+export * from './catalogItem'
