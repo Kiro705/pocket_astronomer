@@ -5,6 +5,7 @@ import Loading from './components/Loading'
 import store from './store'
 import Expo from 'expo'
 const FontAwesome = require('./assets/fontawesome-webfont.ttf')
+const MaterialIcons = require('./assets/MaterialIcons-Regular.ttf')
 
 export default class App extends React.Component {
   constructor(props) {
@@ -16,7 +17,8 @@ export default class App extends React.Component {
 
   async componentDidMount() {
     await Expo.Font.loadAsync('FontAwesome', FontAwesome)
-    this.setState({ fontLoaded: true });
+    await Expo.Font.loadAsync('Material Icons', MaterialIcons)
+    this.setState({ fontLoaded: true })
   }
 
   render() {

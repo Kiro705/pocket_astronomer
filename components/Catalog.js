@@ -1,14 +1,17 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import { StyleSheet, View, Image, StatusBar } from 'react-native'
-import { Button } from 'react-native-elements'
-import { setCatalogItem, resetCatalogItem} from '../store'
+import { StyleSheet, View, Text, Image, ScrollView } from 'react-native'
+import { List, ListItem } from 'react-native-elements'
+import { setCatalogItem } from '../store'
+import Accordion from 'react-native-collapsible/Accordion'
+import planets from '../assets/data/planets'
+
+const SECTIONS = [ planets ]
 
 const styles = StyleSheet.create({
   Container: {
     flex: 1,
     backgroundColor: 'black',
-    alignItems: 'center',
   },
   Image: {
     flex: 1,
@@ -22,6 +25,20 @@ const styles = StyleSheet.create({
     fontFamily: 'Courier New',
     textAlign: 'center',
     color: '#600000',
+  },
+  Header: {
+    padding: 15,
+    marginTop: 20,
+    borderTopWidth: 2,
+    borderBottomWidth: 2,
+    borderColor: '#600000',
+    backgroundColor: 'black',
+  },
+  ContentText: {
+    paddingTop: 15,
+    paddingRight: 15,
+    paddingBottom: 15,
+    paddingLeft: 15,
   },
   Buffer1: {
     flex: 1,
@@ -46,23 +63,53 @@ const mapDispatch = (dispatch) => {
 }
 
 function CatalogComponent (props){
+
+  const _renderHeader = function(section) {
+    return (
+      <View style={styles.Header}>
+        <Text style={styles.Text}>{section.title}</Text>
+      </View>
+    );
+  }
+
+  const _renderContent = function(section) {
+    return (
+      <View>
+        <List containerStyle={{borderTopWidth: 2, borderTopColor: '#600000'}}>{
+          section.content.map((data) => {
+            return (
+              <ListItem
+                key={data.title}
+                title={data.title}
+                chevronColor="#600000"
+                fontFamily="Courier New"
+                containerStyle={{backgroundColor: '#191919', borderBottomWidth: 2, borderBottomColor: '#600000'}}
+                titleStyle={{fontSize: 22, color: '#600000'}}
+                underlayColor="black"
+                onPress={
+                  () => {
+                    props.handleSelect(data)
+                    props.navigation.navigate('CatalogItem')
+                  }
+                }
+              />
+            )
+          })
+        }</List>
+      </View>
+    );
+  }
+
   return (
     <View style={styles.Container}>
-      <StatusBar barStyle="light-content" />
-      <Image style={styles.Image} source={require('./../assets/whirlpool_galaxy.png')}>
-        <View>
-          <Button
-            raised
-            buttonStyle={{backgroundColor: '#191919', borderRadius: 10}}
-            textStyle={styles.Text}
-            title={`Tester`}
-            onPress={() => {
-              props.handleSelect({title: 'something', nothing: 'nothing'})
-              props.navigation.navigate('CatalogItem')
-            }
-          }
+      <Image style={styles.Image} source={require('./../assets/whirlpool_galaxy.png')} >
+        <ScrollView>
+          <Accordion
+            sections={SECTIONS}
+            renderHeader={_renderHeader}
+            renderContent={_renderContent}
           />
-        </View>
+        </ScrollView>
       </Image>
     </View>
   )
