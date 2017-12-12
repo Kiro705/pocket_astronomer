@@ -5,8 +5,9 @@ import { List, ListItem } from 'react-native-elements'
 import { setCatalogItem } from '../store'
 import Accordion from 'react-native-collapsible/Accordion'
 import planets from '../assets/data/planets'
+import moons from '../assets/data/moons'
 
-const SECTIONS = [ planets ]
+const SECTIONS = [ planets, moons ]
 
 const styles = StyleSheet.create({
   Container: {

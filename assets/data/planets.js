@@ -1,4 +1,4 @@
-const planetObj = {
+const planetsObj = {
   title: 'Plantets',
   content: [
     {
@@ -138,4 +138,4 @@ const planetObj = {
   ]
 }
 
-export default planetObj
+export default planetsObj
