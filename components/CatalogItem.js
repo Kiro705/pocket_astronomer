@@ -45,7 +45,6 @@ const mapState = (state) => {
 }
 
 function CatalogItemComponent(props){
-	console.log('props', props.catalogItem)
 	return (
 		<View style={styles.Container}>
       <ScrollView>

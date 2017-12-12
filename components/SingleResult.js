@@ -65,7 +65,7 @@ function SingleResultComponent(props){
 		<View style={styles.Container}>
       <ScrollView>
         <StatusBar barStyle="light-content" />
-  			<Text style={styles.Title}> {props.singleResult.title}</Text>
+        <Text style={styles.Title}> {props.singleResult.title}</Text>
         <Divider style={{ backgroundColor: '#191919' }} />
         <Text style={styles.Description}>{props.singleResult.description}</Text>
         <Divider style={{ backgroundColor: '#191919' }} />
