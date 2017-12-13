@@ -6,11 +6,7 @@ const SET_CATALOG_ITEM = 'SET_CATALOG_ITEM'
 /**
  * INITIAL STATE
  */
-const catalogItem = {
-	title: 'MARS',
-	temp: 'COLD',
-	surface: 'ROCKY'
-}
+const catalogItem = {}
 
 /**
  * ACTION CREATORS

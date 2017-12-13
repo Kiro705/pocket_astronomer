@@ -6,8 +6,11 @@ import { setCatalogItem } from '../store'
 import Accordion from 'react-native-collapsible/Accordion'
 import planets from '../assets/data/planets'
 import moons from '../assets/data/moons'
+import dwarfPlanets from '../assets/data/dwarfPlanets'
+import stars from '../assets/data/stars'
+import deepSpaceObjects from '../assets/data/deepSpaceObjects'
 
-const SECTIONS = [ planets, moons ]
+const SECTIONS = [ planets, moons, dwarfPlanets, stars, deepSpaceObjects ]
 
 const styles = StyleSheet.create({
   Container: {
