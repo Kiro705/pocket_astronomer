@@ -19,15 +19,15 @@ export const Tabs = TabNavigator({
   CatalogStack: {
     screen: CatalogStack,
     navigationOptions: {
-      tabBarLabel: 'Catalog'
+      tabBarLabel: 'Library'
     }
   },
-  Settings: {
-    screen: Settings,
-    navigationOptions: {
-      tabBarLabel: 'Settings'
-    }
-  }
+  // Settings: {
+  //   screen: Settings,
+  //   navigationOptions: {
+  //     tabBarLabel: 'Settings'
+  //   }
+  // }
 }, {
   tabBarPosition: 'bottom',
   animationEnabled: true,
