@@ -159,6 +159,24 @@ const dwarfPlanetsObj = {
       Satellites: 0,
       Albedo: '0.090'
     },
+    {
+      title: 'Vesta (asteroid)',
+      Category: 'Asteroid belt',
+      Mass: '2.590×10^20 kg',
+      Radius: '262.7 km',
+      Density: '3.456 g/cm^3',
+      'Temperature (min/max)': '-307/26.3 °F',
+      'Surface gravity': '0.025 g',
+      'Escape velocity': '0.36 km/s',
+      Aphelion: '2.5714 AU',
+      Perihelion: '2.1522 AU',
+      'Rotation period': '5.342 hr',
+      'Orbital period': '3.63 years',
+      'Orbital inclination': '7.140°',
+      'Axial tilt': '29°',
+      Satellites: 0,
+      Albedo: '0.423'
+    },
   ]
 }
 
