@@ -6,8 +6,8 @@ const CatalogStack = StackNavigator({
 	Catalog: {
     screen: Catalog,
     navigationOptions: ({navigation}) => ({
-      title: `Catalog`,
-      headerBackTitle: 'Catalog',
+      title: `Library`,
+      headerBackTitle: 'Library',
       headerBackTitleStyle: {
         color: '#600000',
         fontFamily: 'Courier New',
