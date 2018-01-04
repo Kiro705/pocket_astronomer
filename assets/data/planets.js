@@ -1,5 +1,5 @@
 const planetsObj = {
-  title: 'Plantets',
+  title: 'Planets',
   content: [
     {
       title: 'Mercury',
