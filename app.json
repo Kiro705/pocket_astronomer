@@ -5,9 +5,10 @@
     "sdkVersion": "22.0.0",
     "version": "0.1.2",
     "privacy": "public",
+    //Available in expo 24.0.0, but that version is causeing bugs.
     // "platforms": ["ios"],
     // "githubUrl": "https://github.com/Kiro705/pocket_astronomer",
     "orientation": "portrait",
-    "description": "An educational astronomy app designed for iPhone and iPad. Built as a solo project during the Fullstack fellowship. Pocket Astronomer was created to assist instructors at a previous job I had in astronomy education. Utilized React-Native and Expo to construct the mobile app. Designed to be compatible with all sizes of iPhone and iPad."
+    "description": "An educational astronomy app designed for iPhone and iPad. Built as a solo project during the Fullstack fellowship. Pocket Astronomer was created to assist instructors at a previous job I had in astronomy education. /nUtilized React-Native and Expo to construct the mobile app. /nDesigned to be compatible with all sizes of iPhone and iPad. /n /nhttps://github.com/Kiro705/pocket_astronomer"
   }
 }

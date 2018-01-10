@@ -1,8 +1,8 @@
 {
-  "expoServerPort": 19000,
-  "packagerPort": 19001,
-  "packagerPid": 6641,
-  "expoServerNgrokUrl": "https://ni-kts.kiro705.pocket-astronomer.exp.direct",
-  "packagerNgrokUrl": "https://packager.ni-kts.kiro705.pocket-astronomer.exp.direct",
-  "ngrokPid": 6666
+  "expoServerPort": null,
+  "packagerPort": null,
+  "packagerPid": null,
+  "expoServerNgrokUrl": "https://ui-grm.kiro705.pocket-astronomer.exp.direct",
+  "packagerNgrokUrl": "https://packager.ui-grm.kiro705.pocket-astronomer.exp.direct",
+  "ngrokPid": 10117
 }
