@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
 		backgroundColor: 'black',
   },
   Image: {
-    height: 500,
+    height: height * 0.5,
     resizeMode: 'contain',
     width: width - 20,
     margin: 10,

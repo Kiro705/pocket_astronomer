@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
   Image: {
     borderWidth: 2,
     borderColor: '#600000',
-    height: 300,
+    height: height * 0.5,
     resizeMode: 'contain',
     width: width - 20,
     marginLeft: 10,

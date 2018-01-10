@@ -2,6 +2,9 @@ import { StackNavigator } from 'react-navigation'
 import Catalog from './Catalog'
 import CatalogItem from './CatalogItem'
 
+const Dimensions = require('Dimensions')
+const  {height, width} = Dimensions.get('window')
+
 const CatalogStack = StackNavigator({
 	Catalog: {
     screen: Catalog,
@@ -11,7 +14,7 @@ const CatalogStack = StackNavigator({
       headerBackTitleStyle: {
         color: '#600000',
         fontFamily: 'Courier New',
-        fontSize: 24,
+        fontSize: width * 0.06,
         fontWeight: 'normal'
       },
       headerStyle: {
@@ -20,7 +23,7 @@ const CatalogStack = StackNavigator({
       headerTitleStyle: {
         color: '#600000',
         fontFamily: 'Courier New',
-        fontSize: 30,
+        fontSize: width * 0.08,
         fontWeight: 'normal'
       },
       headerTintColor: '#600000'
@@ -41,13 +44,13 @@ const CatalogStack = StackNavigator({
       headerTitleStyle: {
         color: '#600000',
         fontFamily: 'Courier New',
-        fontSize: 30,
+        fontSize: width * 0.08,
         fontWeight: 'normal'
       },
       headerBackTitleStyle: {
         color: '#600000',
         fontFamily: 'Courier New',
-        fontSize: 24,
+        fontSize: width * 0.06,
         fontWeight: 'normal'
       },
       headerTintColor: '#600000'

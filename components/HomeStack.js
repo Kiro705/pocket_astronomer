@@ -3,6 +3,9 @@ import Home from './Home'
 import SearchResults from './SearchResults'
 import SingleResult from './SingleResult'
 
+const Dimensions = require('Dimensions')
+const  {height, width} = Dimensions.get('window')
+
 const HomeStack = StackNavigator({
 	Home: {
     screen: Home,
@@ -21,7 +24,7 @@ const HomeStack = StackNavigator({
       headerTitleStyle: {
         color: '#600000',
         fontFamily: 'Courier New',
-        fontSize: 30,
+        fontSize: width * 0.08,
         fontWeight: 'normal'
       },
       headerTintColor: '#600000'
@@ -42,13 +45,13 @@ const HomeStack = StackNavigator({
       headerTitleStyle: {
         color: '#600000',
         fontFamily: 'Courier New',
-        fontSize: 30,
+        fontSize: width * 0.075,
         fontWeight: 'normal'
       },
       headerBackTitleStyle: {
         color: '#600000',
         fontFamily: 'Courier New',
-        fontSize: 24,
+        fontSize: width * 0.06,
         fontWeight: 'normal'
       },
       headerTintColor: '#600000'
@@ -69,13 +72,13 @@ const HomeStack = StackNavigator({
         headerTitleStyle: {
           color: '#600000',
           fontFamily: 'Courier New',
-          fontSize: 30,
+          fontSize: width * 0.08,
           fontWeight: 'normal'
         },
         headerBackTitleStyle: {
           color: '#600000',
           fontFamily: 'Courier New',
-          fontSize: 24,
+          fontSize: width * 0.06,
           fontWeight: 'normal'
         },
         headerTintColor: '#600000'

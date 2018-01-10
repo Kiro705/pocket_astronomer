@@ -3,6 +3,11 @@
     "name": "Pocket Astronomer",
     "slug": "pocket_astronomer",
     "sdkVersion": "22.0.0",
-    "privacy": "public"
+    "version": "0.1.2",
+    "privacy": "public",
+    "platforms": ["ios"],
+    "githubUrl": "https://github.com/Kiro705/pocket_astronomer",
+    "orientation": "portrait",
+    
   }
 }

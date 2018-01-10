@@ -1,8 +1,11 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import { StyleSheet, View, Image, StatusBar } from 'react-native'
+import { StyleSheet, View, Image, StatusBar, KeyboardAvoidingView } from 'react-native'
 import { Button, FormInput } from 'react-native-elements'
 import { getSearchResults, writeSearchTopic, resetSearchResults, resetSearchTopic } from '../store'
+
+const Dimensions = require('Dimensions')
+const  {height, width} = Dimensions.get('window')
 
 const styles = StyleSheet.create({
 	Container: {
@@ -18,7 +21,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   Text: {
-    fontSize: 28,
+    fontSize: 32,
     fontFamily: 'Courier New',
     textAlign: 'center',
     color: '#600000',
@@ -31,7 +34,7 @@ const styles = StyleSheet.create({
     borderRadius: 3,
   },
   FormInput: {
-    fontSize: 28,
+    fontSize: 0.08 * width,
     margin: 5,
     fontFamily: 'Courier New',
     color: 'gray',
@@ -65,7 +68,10 @@ const mapDispatch = (dispatch) => {
 
 function HomeComponent(props){
 	return (
-		<View style={styles.Container}>
+		<KeyboardAvoidingView
+      style={styles.Container}
+      behavior="padding"
+      >
       <StatusBar barStyle="light-content" />
 			<Image style={styles.Image} source={require('./../assets/beehive_cluster.png')} >
         <View style={styles.Buffer3} />
@@ -97,7 +103,7 @@ function HomeComponent(props){
         </View>
         <View style={styles.Buffer3} />
 			</Image>
-		</View>
+		</KeyboardAvoidingView>
 	)
 }
 
