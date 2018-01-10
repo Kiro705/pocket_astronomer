@@ -1,8 +1,8 @@
 {
-  "expoServerPort": null,
-  "packagerPort": null,
-  "packagerPid": null,
-  "expoServerNgrokUrl": null,
-  "packagerNgrokUrl": null,
-  "ngrokPid": null
+  "expoServerPort": 19000,
+  "packagerPort": 19001,
+  "packagerPid": 6346,
+  "expoServerNgrokUrl": "https://mz-wk6.kiro705.pocket-astronomer.exp.direct",
+  "packagerNgrokUrl": "https://packager.mz-wk6.kiro705.pocket-astronomer.exp.direct",
+  "ngrokPid": 6361
 }
